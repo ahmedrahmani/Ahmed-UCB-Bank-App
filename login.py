@@ -26,7 +26,7 @@ def login_page():
                     st.session_state['employee_name'] = user_details['employee_name']
                     # Update the current_page to 'Dashboard'
                     st.session_state['current_page'] = 'Dashboard'
-                    st.experimental_rerun()
+                    st.rerun()
                 else:
                     # Credentials are incorrect
                     st.error("Incorrect details. Enter valid credentials.")

@@ -1,1 +1,5 @@
 mysql-connector-python
+
+streamlit-option-menu
+
+sqlalchemy

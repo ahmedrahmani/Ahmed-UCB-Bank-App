@@ -4,7 +4,7 @@ class DatabaseConnector:
     def __init__(self):
         self.host = 'sql8.freesqldatabase.com'
         self.user = 'sql8707280'
-        self.password = ' ZwRRg72v9H'
+        self.password = 'ZwRRg72v9H'
         self.dbname = 'sql8707280'
         self.port = 3306  # Default port for MySQL
         self.connection = None

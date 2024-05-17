@@ -48,7 +48,7 @@ def welcome_page():
             if st.button('Bank Admin Login'):
                 # Update the session state to trigger the login page display
                 st.session_state['current_page'] = 'Login'
-                st.experimental_rerun()  # Use st.rerun() if using a newer version of Streamlit
+                st.rerun()  # Use st.rerun() if using a newer version of Streamlit
 
         # Close the container with the specified class
         st.markdown('</div>', unsafe_allow_html=True)
