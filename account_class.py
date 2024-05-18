@@ -49,16 +49,16 @@ class Account:
                 background-image: linear-gradient(to right, #ee00ff 0%, #fbff00 100%);
                 color: transparent;
                 -webkit-background-clip: text;
-                font-size: 40px;
+                font-size: 2rem;
                 text-align: center;
             }
             
             .h1 {
-                font-size: 40px;
+                font-size: 2rem;
             }
             
             .h2 {
-                font-size: 24px;
+                font-size: 1.5rem;
                 margin-bottom: 25px;
                 text-align: center;
                 background-image: linear-gradient(to right, #ee00ff 0%, #fbff00 100%);
@@ -68,12 +68,12 @@ class Account:
             
             .h3 {
                 text-align: center;
-                font-size: 24px;
+                font-size: 1.75rem;
                 margin-bottom: 5px;
             }
             
             .h4 {
-                font-size: 16px;
+                font-size: 1.5em;
                 margin-bottom: 20px;
                 color: #ff4b4b;
                 background-color: #282828;
@@ -105,23 +105,23 @@ class Account:
                 }
             
                 .gradienttext {
-                    font-size: 30px;
+                    font-size: 1.75rem;
                 }
             
                 .h1 {
-                    font-size: 30px;
+                    font-size: 1.6rem;
                 }
             
                 .h2 {
-                    font-size: 20px;
+                    font-size: 1.25rem;
                 }
             
                 .h3 {
-                    font-size: 20px;
+                    font-size: 1.2rem;
                 }
             
                 .h4 {
-                    font-size: 14px;
+                    font-size: 1rem;
                 }
             
                 .profile_box {
@@ -139,23 +139,23 @@ class Account:
                 }
             
                 .gradienttext {
-                    font-size: 25px;
+                    font-size: 1.5rem;
                 }
             
                 .h1 {
-                    font-size: 25px;
+                    font-size: 1.em;
                 }
             
                 .h2 {
-                    font-size: 18px;
+                    font-size: 1.2rem;
                 }
             
                 .h3 {
-                    font-size: 18px;
+                    font-size: 1rem;
                 }
             
                 .h4 {
-                    font-size: 12px;
+                    font-size: 0.8rem;
                 }
             
                 .profile_box {
@@ -173,23 +173,23 @@ class Account:
                 }
             
                 .gradienttext {
-                    font-size: 20px;
+                    font-size: 1.2rem;
                 }
             
                 .h1 {
-                    font-size: 20px;
+                    font-size: 1.2rem;
                 }
             
                 .h2 {
-                    font-size: 16px;
+                    font-size: 1rem;
                 }
             
                 .h3 {
-                    font-size: 16px;
+                    font-size: 0.8rem;
                 }
             
                 .h4 {
-                    font-size: 10px;
+                    font-size: 0.6rem;
                 }
             
                 .profile_box {
@@ -197,7 +197,7 @@ class Account:
                 }
             
                 .details {
-                    font-size: 12px;
+                    font-size: 0.75rem;
                 }
             }
         </style>
