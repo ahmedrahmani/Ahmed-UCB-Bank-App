@@ -246,7 +246,7 @@ class Account:
             """
             st.markdown(profile_card_html, unsafe_allow_html=True)
         else:
-            st.write("Account not found.")
+            st.error("Account not found.")
 
     def search_account(self):
         st.write("""
