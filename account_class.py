@@ -9,7 +9,7 @@ class Account:
         self.apply_styles()
     def apply_styles(self):
         css_style = """
-        <style href='profile.css'>
+        <style href="profile.css">
         
         </style>
         """
