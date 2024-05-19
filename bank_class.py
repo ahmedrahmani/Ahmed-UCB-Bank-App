@@ -2,7 +2,7 @@ import streamlit as st
 from database_class import DatabaseConnector
 import datetime
 import random
-class Bank():
+class Bank:
     def __init__(self):
         self.db = DatabaseConnector()
         self.db.connect()
@@ -20,10 +20,11 @@ class Bank():
                         <h3 style="color: #f5c842; text-align: center;">Create New Customer Account</h3>
                     """, unsafe_allow_html=True)
     def account_number_form(self):
-
+        # Hiding New Account Form inside the expander
         with st.expander("Create New Account"):
-
             st.subheader("Welcome to UCB Bank")
+
+            # Button to generate unique account number for new customers
             if st.button("Click to Generate New Account Number"):
                 account_number = self.generate_account_number()
                 st.session_state['account_number'] = account_number
@@ -35,6 +36,7 @@ class Bank():
             if 'form_container' not in st.session_state:
                 # Initialize the form container in the session state
                 st.session_state['form_container'] = st.empty()
+
     def generate_account_number(self):
         # Generate a random number with the prefix "2405"
         random_part = random.randint(0, 9999)
@@ -46,12 +48,16 @@ class Bank():
         else:
             # Recursively try to generate a unique number if the first attempt was not unique
             return self.generate_account_number()
+
+    # Function to generate unique account number
     def is_unique_account_number(self, account_number):
         query = f"SELECT COUNT(*) FROM accounts_data WHERE account_number = {account_number}"
         cursor = self.db.connection.cursor()
         cursor.execute(query)
         (count,) = cursor.fetchone()
         return count == 0
+
+    # Form to create new account number and save it into database
     def create_account_form(self):
         if st.session_state.get('show_form', True):
             with st.session_state['form_container']:
@@ -97,17 +103,19 @@ class Bank():
                     submit_button = st.form_submit_button("Create Account")
                     if submit_button:
                         if not customer_name:
-                            st.error("Customer Name cannot be left empty.")
+                            st.error("Customer Name cannot be left empty.") # Error message if Name is empty
                         if not email_id:
-                            st.error("Email ID cannot be left empty.")
+                            st.error("Email ID cannot be left empty.") # Error message if Email is empty
                         if not phone_number:
-                            st.error("Phone Number cannot be left empty.")
+                            st.error("Phone Number cannot be left empty.") # Error message if Phone number is empty
                         if not customer_address:
-                            st.error("Customer Address cannot be left empty.")
+                            st.error("Customer Address cannot be left empty.") # Error message if Address is empty
                         if customer_name and email_id and phone_number and customer_address:
                             self.create_account(customer_name, email_id, phone_number, account_type, total_balance,
                                                 customer_address)
                             st.success("Account created successfully!")
+
+    # Cross-Checking for uniqueness of account number and storing account details to the database
     def create_account(self, customer_name, email_id, phone_number, account_type, total_balance, customer_address):
         account_number = st.session_state['account_number']
         created_on = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')

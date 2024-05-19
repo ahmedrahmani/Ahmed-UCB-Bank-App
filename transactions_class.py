@@ -29,3 +29,13 @@ class Transactions():
                 st.error("Please select an account to view transactions.")
         else:
             st.error("Please select an account to view transactions.")
+
+
+#code not in use in app sidebar menu options
+
+#from transactions_class import Transactions
+
+        #if app == "Transactions":
+            #db_connector = DatabaseConnector()
+            #transactions = Transactions(db_connector)
+            #transactions.show_transactions() #

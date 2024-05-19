@@ -4,7 +4,7 @@ from login import login_page
 from app import BankApp
 from welcome import welcome_page
 
-
+# Streamlit webpage setup
 st.set_page_config(
     page_title="UCB BANK",  # Title of the page
     page_icon=":bank:",     # Favicon (you can use emojis)

@@ -1,27 +1,31 @@
 import mysql.connector
 from datetime import datetime
 class DatabaseConnector:
+    __port: int
+
     def __init__(self):
-        self.host = 'sql8.freesqldatabase.com'
-        self.user = 'sql8707280'
-        self.password = 'ZwRRg72v9H'
-        self.dbname = 'sql8707280'
-        self.port = 3306  # Default port for MySQL
         self.connection = None
+        self.__host = 'sql8.freesqldatabase.com'
+        self.__user = 'sql8707280'
+        self.__password = 'ZwRRg72v9H'
+        self.__dbname = 'sql8707280'
+        self.__port = 3306  # Default port for MySQL
+        self.__connection = None
 
     def connect(self):
         try:
             self.connection = mysql.connector.connect(
-                host=self.host,
-                user=self.user,
-                password=self.password,
-                database=self.dbname,
-                port=self.port
+                host=self.__host,
+                user=self.__user,
+                password=self.__password,
+                database=self.__dbname,
+                port=self.__port
             )
             print("Connected to database successfully!")
         except mysql.connector.Error as e:
             print("Unable to connect to the database:", e)
 
+    # Database disconnect code
     def disconnect(self):
         if self.connection:
             self.connection.close()
@@ -39,6 +43,7 @@ class DatabaseConnector:
                 print("Error executing query:", e)
         else:
             print("Not connected to the database.")
+
 
     # fetching transactions for all transactions
     def fetch_all_transactions(self):
@@ -100,7 +105,7 @@ class DatabaseConnector:
             return False
 
 
-    #transfer funds query function
+    # transfer funds query function
 
     def transfer_transactions(self, sender_account_number, receiver_account_number, transfer_amount):
         try:
@@ -153,7 +158,7 @@ class DatabaseConnector:
             return False
 
 
-    #checking transactions query function
+    # checking transactions query function
     def fetch_transactions(self, account_number):
         query = """
         SELECT *
@@ -170,7 +175,3 @@ class DatabaseConnector:
         except mysql.connector.Error as e:
             print(f"Error fetching transactions: {e}")
             return []
-
-
-    #authenticate user
-

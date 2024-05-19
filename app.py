@@ -6,15 +6,15 @@ from account_class import Account
 from deposit_class import Deposit
 from withdraw_class import Withdraw
 from fund_transfer_class import FundTransfer
-from transactions_class import Transactions
 from checking_account_class import CheckingAccount
 from bank_class import Bank
 
 class BankApp:
     def __init__(self):
         super().__init__()
-        self.db = DatabaseConnector()
-        self.db.connect()
+        self.__db = DatabaseConnector()
+        self.__db.connect()
+
 
     def navigation(self):
         with st.sidebar:
@@ -33,36 +33,30 @@ class BankApp:
         if app == "Bank":
             bank = Bank()
             bank.account_number_form()
-            bank.create_account_form()
-            #bank.sub_menu()
+            bank.create_account_form() #create new account form
 
         if app == "Select Account":
             account = Account()
-            account.select_account()
-
-        if app == "Transactions":
-            db_connector = DatabaseConnector()
-            transactions = Transactions(db_connector)
-            transactions.show_transactions()
+            account.select_account() #Search in the search-box and select account
 
         if app == "Deposit":
-            deposit = Deposit(self.db)
-            deposit.perform_deposit()
+            deposit = Deposit(self.__db)
+            deposit.perform_deposit() #Deposit View of the app
 
         if app == "Withdraw":
-            withdraw = Withdraw(self.db)
-            withdraw.perform_withdraw()
+            withdraw = Withdraw(self.__db)
+            withdraw.perform_withdraw() #Withdraw View of the app
 
         if app == "Fund Transfer":
             fund_transaction = FundTransfer()
-            fund_transaction.perform_fund_transfer()
+            fund_transaction.perform_fund_transfer() #Fund Transfer View of the app
 
         if app == "Check Account":
             check_account = CheckingAccount()
-            check_account.check_this_account()
+            check_account.check_this_account() #Checking account transactions view of the account
 
     def __del__(self):
-        self.db.disconnect()
+        self.__db.disconnect() #database disconnection after fetching records
 
 
 if __name__ == "__main__":

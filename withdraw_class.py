@@ -1,19 +1,25 @@
 import streamlit as st
 from decimal import Decimal
-from account_class import Account, SavingsAccount, CurrentAccount
+from account_class import SavingsAccount, CurrentAccount
 
 class Withdraw:
     def __init__(self, db_connector):
-        self.db = db_connector
+        self.__db = db_connector
+
         st.write("""
                     <h3 style="color: #37B9F7; text-align: center; margin-bottom: 40px;">Withdraw Form</h3>
                 """, unsafe_allow_html=True)
+
+    # Code to perform Withdrawal from the selected account
     def perform_withdraw(self):
         if 'account_number' in st.session_state and 'total_balance' in st.session_state and 'account_type' in st.session_state:
+
+            # Taking data from sessions state to utilize in this code
             account_number = st.session_state['account_number']
             total_balance = Decimal(st.session_state['total_balance'])
             account_type = st.session_state['account_type']
 
+            # Displaying selected accounts basic information
             col1, col2, col3 = st.columns([1, 1, 1])
             with col1:
                 st.info(f"Withdraw Account Number: {account_number}")
@@ -37,11 +43,17 @@ class Withdraw:
 
                 if st.form_submit_button("Withdraw"):
                     total_withdrawal = account.withdraw(amount_decimal)
+
+                    # Check for insufficient balance in the selected account
                     if total_withdrawal <= total_balance:
-                        if self.db.update_balance(account_number, total_withdrawal) and self.db.record_transaction(
+                        if self.__db.update_balance(account_number, total_withdrawal) and self.__db.record_transaction(
                                 account_number, total_withdrawal, 'withdrawal', 'Withdrawal from ATM'):
                             new_balance = total_balance - total_withdrawal
+
+                            # updating new balance of the account in the session
                             st.session_state['total_balance'] = new_balance
+
+                            # Success message displayed after withdrawal is done successfully without any issue
                             success_message = f"""
                                 <div style='background-color: #36a12a; color: white; font-size: 30px; text-align: center; padding: 10px; border-radius: 15px; width:50%; margin: 20px auto;'>
                                     <strong>Amount : </strong> £. {amount_decimal:.2f} <p>withdrawn successfully.</p> 
@@ -54,5 +66,5 @@ class Withdraw:
                     else:
                         st.error("Insufficient funds.")
         else:
+            # Exception when there's no account number found in the session state
             st.error("Please select an account to perform a withdrawal.")
-
