@@ -1,60 +1,34 @@
--- Mysql file
 
+-- bank_db.sql
 
+CREATE DATABASE IF NOT EXISTS bank_db;
 
-
---
 -- Table structure for table `accounts_data`
---
-
 DROP TABLE IF EXISTS `accounts_data`;
-
 CREATE TABLE `accounts_data` (
   `account_id` int NOT NULL AUTO_INCREMENT,
-  `account_number` int NOT NULL,
-  `customer_name` varchar(255) NOT NULL,
-  `email_id` varchar(255) DEFAULT NULL,
-  `phone_number` varchar(20) DEFAULT NULL,
-  `account_type` enum('savings','current') NOT NULL,
-  `total_balance` decimal(10,2) NOT NULL,
-  `customer_address` varchar(255) NOT NULL,
-  `created_on` datetime NOT NULL,
-  PRIMARY KEY (`account_id`),
-  UNIQUE KEY `account_number` (`account_number`)
+  `account_number` int NOT NULL, `customer_name` varchar(255) NOT NULL,
+  `email_id` varchar(255) DEFAULT NULL, `phone_number` varchar(20) DEFAULT NULL,
+  `account_type` enum('savings','current') NOT NULL, `total_balance` decimal(10,2) NOT NULL,
+  `customer_address` varchar(255) NOT NULL, `created_on` datetime NOT NULL,
+  PRIMARY KEY (`account_id`), UNIQUE KEY `account_number` (`account_number`)
 ) 
 
-
---
 -- Table structure for table `Employees`
---
-
 DROP TABLE IF EXISTS `Employees`;
-
 CREATE TABLE `Employees` (
-  `employee_id` varchar(255) NOT NULL,
-  `employee_name` varchar(255) NOT NULL,
-  `employee_role` varchar(255) NOT NULL,
-  `employee_username` varchar(255) NOT NULL,
-  `employee_password` varchar(255) NOT NULL,
-  PRIMARY KEY (`employee_id`)
-) 
+  `employee_id` varchar(255) NOT NULL, `employee_name` varchar(255) NOT NULL, `employee_role` varchar(255) NOT NULL,
+  `employee_username` varchar(255) NOT NULL, `employee_password` varchar(255) NOT NULL, PRIMARY KEY (`employee_id`)
+)
 
-
---
 -- Table structure for table `transactions`
---
-
 DROP TABLE IF EXISTS `transactions`;
-
 CREATE TABLE `transactions` (
   `transaction_id` int NOT NULL AUTO_INCREMENT,
-  `account_number` int NOT NULL,
-  `date_time` datetime NOT NULL,
-  `amount` decimal(10,2) NOT NULL,
+  `account_number` int NOT NULL, `date_time` datetime NOT NULL, `amount` decimal(10,2) NOT NULL,
   `transaction_type` enum('deposit','withdrawal','txn_fee','txn_fd.sent','txn_fd.rcvd') NOT NULL,
   `transaction_details` text,
-  PRIMARY KEY (`transaction_id`),
-  KEY `account_number` (`account_number`)
+  PRIMARY KEY (`transaction_id`), KEY `account_number` (`account_number`)
 ) 
 
 
