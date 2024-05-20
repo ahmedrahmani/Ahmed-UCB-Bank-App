@@ -1,8 +1,8 @@
 # apps.py
 import streamlit as st
-from login import login_page
-from app import BankApp
-from welcome import welcome_page
+from login import login_page # importing login page module
+from app import BankApp # importing BankApp's module
+from welcome import welcome_page # importing Welcome page module
 
 # Streamlit webpage setup
 st.set_page_config(
@@ -13,12 +13,13 @@ st.set_page_config(
 )
 
 
-app = BankApp()  # Create an instance of the BankApp class
+app = BankApp()  # An instance of the BankApp class
+
 # Define the navigation structure
 PAGES = {
-    "Welcome": welcome_page,
-    "Login": login_page,
-    "Dashboard": app.navigation,
+    "Welcome": welcome_page, # redirects to Welcome page
+    "Login": login_page, # redirects to Login page
+    "Dashboard": app.navigation, # redirects to Bank's Dashboard page
 }
 
 # Display the appropriate page based on the session state
@@ -27,4 +28,4 @@ if 'current_page' not in st.session_state:
 
 # Render the selected page
 if st.session_state['current_page'] in PAGES:
-    PAGES[st.session_state['current_page']]()
+    PAGES[st.session_state['current_page']]() # redirects to page as per session state
