@@ -4,7 +4,7 @@ from account_class import SavingsAccount, CurrentAccount
 
 class Withdraw:
     def __init__(self, db_connector):
-        self.__db = db_connector
+        self.__db = db_connector # Using Access modifier for database connector property
 
         st.write("""
                     <h3 style="color: #37B9F7; text-align: center; margin-bottom: 40px;">Withdraw Form</h3>

@@ -153,16 +153,16 @@ class Account:
 class SavingsAccount(Account):
     def withdraw(self, amount):
         fee = Decimal('0.00')
-        if amount > 1000:
-            fee = amount * Decimal('0.02')
-        return amount + fee
+        if amount > 1000: # verifying Transaction fee for savings account withdrawal
+            fee = amount * Decimal('0.02') # Adding Transaction fee for savings account withdrawal
+        return amount + fee # returning Transaction fee of savings account withdrawal fee to the withdraw method
 
 # Subclass of Account class and overriding Withdraw Class
 class CurrentAccount(Account):
     def withdraw(self, amount):
         fee = Decimal('0.00')
-        if amount > 5000:
-            fee = amount * Decimal('0.02')
-        return amount + fee
+        if amount > 5000: # verifying Transaction fee for current account withdrawal
+            fee = amount * Decimal('0.02') # Adding Transaction fee for current account withdrawal
+        return amount + fee # returning Transaction fee of current account withdrawal fee to the withdraw method
 
 
