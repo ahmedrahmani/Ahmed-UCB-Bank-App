@@ -1,7 +1,6 @@
 import streamlit as st
 from decimal import Decimal
 
-
 class Deposit:
     def __init__(self, db_connector):
         self.__db_connector = db_connector
@@ -9,11 +8,12 @@ class Deposit:
                     <h3 style="color: #37B9F7; text-align: center; margin-bottom: 40px;">Deposit Form</h3>
                 """, unsafe_allow_html=True)
 
+    # Code to perform deposit
     def perform_deposit(self):
         if 'account_number' in st.session_state:
-            account_number = st.session_state['account_number']
-            total_balance = Decimal(st.session_state['total_balance'])
-            account_type = st.session_state['account_type']
+            account_number = st.session_state['account_number'] # Account number from session state
+            total_balance = Decimal(st.session_state['total_balance']) # Total Balance of selected account from session state
+            account_type = st.session_state['account_type'] # Account Type of selected account  from session state
 
             col1, col2, col3 = st.columns([1, 1, 1])
             with col1:

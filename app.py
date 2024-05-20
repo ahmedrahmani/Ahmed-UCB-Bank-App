@@ -58,8 +58,7 @@ class BankApp:
     def __del__(self):
         self.__db.disconnect() #database disconnection after fetching records
 
-
 if __name__ == "__main__":
-    bank_app = BankApp()
-    bank_app.navigation()
+    bank_app = BankApp() # An instance of BankApp
+    bank_app.navigation() # Navigation function
 
